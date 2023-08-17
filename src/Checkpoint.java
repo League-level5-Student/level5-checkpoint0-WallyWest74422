@@ -30,8 +30,14 @@ public class Checkpoint {
 		 * 5. Print only the cars with "toyota" in the name.
 		 */
 		
+		ArrayList<CarMPGEntry> list = readCarMPGEntryDataFromFile();
+		Stream<CarMPGEntry> stream = list.stream();
+		stream.forEach((CarMPGEntry) -> System.out.println(CarMPGEntry.mpg));
 		
+		list.stream().sorted((CarMPGEntry1, CarMPGEntry2) -> CarMPGEntry1.carName.compareTo(CarMPGEntry2.carName))
+	     .forEach((CarMPGEntry) -> System.out.println(CarMPGEntry.carName));
 	}
+
 	
 	public static ArrayList<CarMPGEntry> readCarMPGEntryDataFromFile(){
 		ArrayList<CarMPGEntry> carList = new ArrayList<CarMPGEntry>();
