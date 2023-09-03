@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Checkpoint {
@@ -29,13 +30,19 @@ public class Checkpoint {
 		 * 
 		 * 5. Print only the cars with "toyota" in the name.
 		 */
-		
+			
 		ArrayList<CarMPGEntry> list = readCarMPGEntryDataFromFile();
 		Stream<CarMPGEntry> stream = list.stream();
-		stream.forEach((CarMPGEntry) -> System.out.println(CarMPGEntry.mpg));
-		
+		stream.forEach((CarMPGEntry) -> System.out.println(CarMPGEntry.mpg + "   " +CarMPGEntry.cylinders + "   " + CarMPGEntry.displacement + "   " + CarMPGEntry.horsePower + "   " + CarMPGEntry.weight + "   " + CarMPGEntry.acceleration + "   " + CarMPGEntry.modelYear + "   " + CarMPGEntry.origin + "   " + CarMPGEntry.carName));
+		System.out.println(" ");
+		list.stream().forEach((CarMPGEntry) -> System.out.println(CarMPGEntry.mpg));
+		System.out.println(" ");
 		list.stream().sorted((CarMPGEntry1, CarMPGEntry2) -> CarMPGEntry1.carName.compareTo(CarMPGEntry2.carName))
 	     .forEach((CarMPGEntry) -> System.out.println(CarMPGEntry.carName));
+		System.out.println(" ");
+		list.stream().filter((CarMPGEntry)-> CarMPGEntry.cylinders!=8).forEach((CarMPGEntry)->System.out.println(CarMPGEntry.mpg + "   " +CarMPGEntry.cylinders + "   " + CarMPGEntry.displacement + "   " + CarMPGEntry.horsePower + "   " + CarMPGEntry.weight + "   " + CarMPGEntry.acceleration + "   " + CarMPGEntry.modelYear + "   " + CarMPGEntry.origin + "   " + CarMPGEntry.carName));
+		System.out.println(" ");
+		list.stream().filter((CarMPGEntry)-> CarMPGEntry.carName.contains("toyota")).forEach((CarMPGEntry)->System.out.println(CarMPGEntry.carName));
 	}
 
 	
